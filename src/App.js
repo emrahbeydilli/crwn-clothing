@@ -1,3 +1,4 @@
+import { collectionGroup } from "firebase/firestore";
 import { Routes, Route } from "react-router-dom";
 
 import Home from './routes/home/home.component';
@@ -9,7 +10,7 @@ const Shop = () => {
 }
 
 const App = () => {
-
+  console.log("render");
   return (
     <Routes>
       <Route path="/" element={<Navigation />}>
@@ -19,7 +20,6 @@ const App = () => {
       </Route>
     </Routes>
   );
-
 }
 
 export default App;
