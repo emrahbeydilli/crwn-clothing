@@ -67,7 +67,6 @@ const SignUpForm = () => {
                     onChange={handleChange}
                     name="displayName"
                     value={displayName}
-
                 />
                 <FormInput
                     label="Email"
