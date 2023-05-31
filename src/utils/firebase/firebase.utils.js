@@ -1,5 +1,5 @@
 
-import { initializeApp } from "firebase/app"; //firestore
+import { initializeApp } from "firebase/app";
 import {
   getAuth,
   signInWithPopup,
