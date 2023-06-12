@@ -1,3 +1,4 @@
+// reselect ile tekrar tekrar categories.reduce işlemi yapmasını engelliyoruz.
 import { createSelector } from 'reselect';
 
 const selectCategoryReducer = (state) => state.categories;
