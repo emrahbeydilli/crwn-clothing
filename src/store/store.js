@@ -5,7 +5,6 @@ import storage from 'redux-persist/lib/storage';
 import { rootReducer } from './root-reducer';
 
 import logger from 'redux-logger';
-
 import thunk from 'redux-thunk';
 
 const middleWares = [process.env.NODE_ENV !== 'production' && logger, thunk].filter(
@@ -15,7 +14,8 @@ const middleWares = [process.env.NODE_ENV !== 'production' && logger, thunk].fil
 const persistConfig = {
   key: 'root', //persist allthing
   storage, //local storage
-  blacklist:['user'], //reducers that you dont wannna use
+  whitelist:['cart'],
+  // blacklist:['user'], //reducers that you dont wannna use
 }
 
 const persistedReducer =  persistReducer(persistConfig,rootReducer);
