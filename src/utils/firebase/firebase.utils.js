@@ -99,10 +99,10 @@ export const createUserDocumentFromAuth = async (
 
   const userDocRef = doc(db, 'users', userAuth.uid); //collection > document
 
-  const userSnapShot = await getDoc(userDocRef); //data
+  const userSnapshot = await getDoc(userDocRef); //data
 
   // If user data exists
-  if (!userSnapShot.exists()) {
+  if (!userSnapshot.exists()) {
     const { displayName, email } = userAuth;
     const createdAt = new Date();
 
@@ -120,7 +120,7 @@ export const createUserDocumentFromAuth = async (
     }
   }
 
-  return userDocRef;
+  return userSnapshot;
 };
 
 // Email/Password Provider
@@ -144,4 +144,18 @@ export const signOutUser = async () => await signOut(auth);
 export const onAuthStateChangedListener = (callback) => {
   // if (!callback) return;
   onAuthStateChanged(auth, callback);
-}  
+} 
+
+
+export const getCurrentUser = () => {
+  return new Promise((resolve, reject) => {
+    const unsubscribe = onAuthStateChanged(
+      auth,
+      (userAuth) => {
+        unsubscribe();
+        resolve(userAuth);
+      },
+      reject
+    );
+  });
+};
